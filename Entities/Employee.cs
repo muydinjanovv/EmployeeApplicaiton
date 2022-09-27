@@ -11,7 +11,7 @@ public class Employee
     public string LastName { get; set; }    
     public string MiddleName { get; set; }
     public DateTime StartDate { get; set; }   
-    public EPositions Positions { get; set; } 
+    public EPositions Position { get; set; } 
     [ForeignKey(nameof(CompanyId))]
     public Company Company { get; set; }
     public int CompanyId { get; set; }
