@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Task.Models;
 
-namespace Task.Controllers;
+namespace dashboard.Controllers;
 
 public class HomeController : Controller
 {

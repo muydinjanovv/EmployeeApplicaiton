@@ -1,0 +1,47 @@
+@model IEnumerable<Company>
+@{
+    ViewData["Title"] = "Companies";
+}
+
+<div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Company List</h2>
+		</div>
+        <div class="col-6 text-end">
+            <a asp-controller="Company" asp-action="Create" class="btn btn-primary">
+               <i class="bi bi-plus-circle"></i> &nbsp; Create New Company
+			</a>
+		</div>
+	</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Member of Employees</th>
+            <th scope="col">Organizational Form</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Company in Model)
+        {
+            <tr>
+                <td>@Company.Id</td>
+                <td>@Company.Name</td>
+                <td>@Company.Employees.Count</td>
+                <td>@Company.OrganizationalForm</td>
+                <td>
+                    <form method="post" asp-controller="Company" asp-action="CompanyEdit" asp-route-id="@Company.Id"> 
+                       <button type="submit" style="width: 73px;" class="btn btn-primary mx-5"> <i class="bi bi-pencil-square"></i> Edit</button> 
+                    </form>
+
+                    <form method="post" asp-action="CompanyDelete" asp-route-id="@Company.Id" asp-controller="Company">
+                        <button type="submit" class="btn btn-danger mx-5"> <i class="bi bi-trash-fill"></i> Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> 
